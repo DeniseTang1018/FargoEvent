@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private void validate(String userName, String userPassword){
         if(userName == "Admin" && userPassword == "1234"){
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            
         }
     }
 }
