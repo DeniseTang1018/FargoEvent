@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="events">
+        <item>Event1</item>
+        <item>Event2</item>
+        <item>Event3</item>
+        <item>Event4</item>
+        <item>Event5</item>
+        <item>Event6</item>
+    </string-array>
+
+    <string-array name="details">
+        <item>Event1 details</item>
+        <item>Event2 details</item>
+        <item>Event3 details</item>
+        <item>Event4 details</item>
+        <item>Event5 details</item>
+        <item>Event6 details</item>
+    </string-array>
+</resources>
