@@ -29,7 +29,11 @@ public class ListFrag extends android.support.v4.app.ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         setListAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.events)));
-        eListener.onEventsSelected(0);
+
+        if(this.getActivity().findViewById(R.id.layout_default) == null){
+            eListener.onEventsSelected(0);
+        }
+
     }
     public interface eventsListener{
         public void onEventsSelected(int index);

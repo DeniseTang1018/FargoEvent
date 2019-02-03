@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LgoinActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText uName;
     private EditText password;
@@ -39,10 +39,11 @@ public class LgoinActivity extends AppCompatActivity {
     private void validate(String userName, String userPassword){
         if(userName.equals("Admin")  && userPassword.equals("1234") ){
 
-            Intent intent = new Intent(LgoinActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
 
-        }else{
+        }
+        else{
             counter--;
 
             attempts.setText("No. of attempts remaining: "+ String.valueOf(counter));
