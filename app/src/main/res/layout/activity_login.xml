@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="#035686"
+    tools:context=".UI.LoginActivity">
+
 
     <EditText
         android:id="@+id/eTName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:autofillHints=""
+        android:background="#03446A"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -34,6 +36,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:autofillHints=""
+        android:background="#03446A"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
@@ -50,6 +53,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:background="#FFFF"
         android:text="Login"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/textView"
@@ -74,7 +78,6 @@
         app:layout_constraintVertical_bias="0.033" />
 
     <TextView
-        android:id="@+id/tVLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -82,6 +85,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Fargo Events App"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/eTName"
         app:layout_constraintEnd_toEndOf="parent"

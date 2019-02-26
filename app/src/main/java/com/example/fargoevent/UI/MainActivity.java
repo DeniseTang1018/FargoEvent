@@ -1,11 +1,12 @@
-package com.example.fargoevent;
+package com.example.fargoevent.UI;
 
-import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements ListFrag.eventsListener{
+import com.example.fargoevent.R;
+
+public class MainActivity extends AppCompatActivity implements ListFrag.eventsListener {
 
     private TextView tVDetail;
     @Override
