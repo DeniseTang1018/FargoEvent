@@ -14,8 +14,10 @@ import android.widget.Toast;
 import com.example.fargoevent.R;
 import com.example.fargoevent.Retrofit.Models.Event;
 import com.example.fargoevent.Retrofit.Models.Speaker;
+import com.example.fargoevent.Retrofit.Models.User;
 import com.example.fargoevent.Retrofit.RetrofitClient;
 
+import com.example.fargoevent.storage.SharedPrefManager;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -40,6 +42,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView textViewDDescrip;
     private String token;
 
+
     private Event event;
 
     @Override
@@ -56,7 +59,9 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-        token = intent.getStringExtra("token");
+//        token = intent.getStringExtra("token");
+        User user = SharedPrefManager.getInstance(this).getUser();
+        token = user.getToken();
 
         recyclerViewSpeaker = (RecyclerView) findViewById(R.id.rvSpeakers);
         int id = intent.getIntExtra("id",0);
@@ -92,7 +97,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
                     for(int i=0; i<event.getSpeakers().size();i++) {
-                        Call<Speaker> callSpeaker = RetrofitClient.getInstance().getApi().getSpeaker("supersecrettoken", event.getSpeakers().get(i).getId());
+                        Call<Speaker> callSpeaker = RetrofitClient.getInstance().getApi().getSpeaker(token, event.getSpeakers().get(i).getId());
                         callSpeaker.enqueue(new Callback<Speaker>() {
                             @Override
                             public void onResponse(Call<Speaker> call, Response<Speaker> response) {
@@ -129,6 +134,16 @@ public class DetailActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(DetailActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+    }
+
     private void initRecyclerView(){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DetailActivity.this);
         adapter = new SpeakerAdapter(speakerList, DetailActivity.this);

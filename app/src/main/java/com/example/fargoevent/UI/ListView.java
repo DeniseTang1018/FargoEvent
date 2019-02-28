@@ -1,5 +1,6 @@
 package com.example.fargoevent.UI;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,12 +8,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.fargoevent.R;
 import com.example.fargoevent.Retrofit.Models.ListItem;
+import com.example.fargoevent.Retrofit.Models.User;
 import com.example.fargoevent.Retrofit.RetrofitClient;
+import com.example.fargoevent.storage.SharedPrefManager;
 
 
 import java.util.List;
@@ -37,8 +42,10 @@ public class ListView extends AppCompatActivity implements MyAdapter.OnItemClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
         ListView.this.setTitle("Events");
-        Intent intent = getIntent();
-        token = intent.getStringExtra("token");
+        User user = SharedPrefManager.getInstance(this).getUser();
+//        Intent intent = getIntent();
+//        token = intent.getStringExtra("token");
+        token = user.getToken();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,6 +72,37 @@ public class ListView extends AppCompatActivity implements MyAdapter.OnItemClick
             }
         });
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(ListView.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.logout){
+            logout();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout(){
+        SharedPrefManager.getInstance(this).clear();
+        Intent intent = new Intent(ListView.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 

@@ -5,6 +5,18 @@ public class User {
     private String userName;
     private String userPassword;
     private String token;
+    private static boolean loggedIn = false;
+
+
+    public static void setLoggedIn(boolean loggedIn) {
+        User.loggedIn = loggedIn;
+    }
+
+    public static boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+
 
     public void setUserName(String userName) {
         this.userName = userName;

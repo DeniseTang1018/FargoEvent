@@ -11,7 +11,7 @@
     <EditText
         android:id="@+id/eTName"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="67dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
@@ -20,6 +20,7 @@
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
     <EditText
         android:id="@+id/eTPassword"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="61dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
@@ -40,6 +41,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="@color/cardview_light_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +50,7 @@
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="57dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
@@ -86,10 +88,12 @@
         android:layout_marginBottom="8dp"
         android:text="Fargo Events App"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/eTName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.61" />
+        app:layout_constraintVertical_bias="0.728" />
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.fargoevent.UI;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.example.fargoevent.R;
 import com.example.fargoevent.Retrofit.Api;
 import com.example.fargoevent.Retrofit.Models.User;
 import com.example.fargoevent.Retrofit.RetrofitClient;
+import com.example.fargoevent.storage.SharedPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +52,17 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void validate(String userName, String userPassword){
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent intent = new Intent(LoginActivity.this, ListView.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+    }
+
+    private void validate(final String userName, final String userPassword){
 
 
         Call<User> call = RetrofitClient.getInstance().getApi().login(userName,userPassword);
@@ -60,8 +72,14 @@ public class LoginActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     // test if get the correct token Toast.makeText(LoginActivity.this,response.body().getToken(),Toast.LENGTH_SHORT).show();
                     token = response.body().getToken();
+
+                    User user = new User(userName,userPassword);
+                    user.setToken(token);
+                    User.setLoggedIn(true);
+                    SharedPrefManager.getInstance(LoginActivity.this).saveUser(user);
                     Intent intent = new Intent(LoginActivity.this, ListView.class);
-                    intent.putExtra("token",token);
+//                    intent.putExtra("token",token);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 
                 }else{
