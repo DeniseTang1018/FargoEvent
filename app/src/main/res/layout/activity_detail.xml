@@ -26,6 +26,8 @@
             android:id="@+id/tvDeatilTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="20dp"
             android:text="Event Title"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -34,13 +36,18 @@
             android:id="@+id/tvDetailTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="5dp"
             android:text="Event Time"
-            android:textSize="18sp" />
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvDetailDescrip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="5dp"
             android:text="Event description"
             android:textSize="14sp" />
 
@@ -48,7 +55,11 @@
             android:id="@+id/tvDetailLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingTop="5dp"
             android:text="Event Location"
+            android:autoLink="map"
+            android:textColorLink="#035686"
             android:textSize="14sp" />
 
         <LinearLayout
@@ -67,13 +78,18 @@
                 android:id="@+id/tvSpeakerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:paddingTop="10dp"
                 android:text="Speaker"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="18sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvSpeakers"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
 

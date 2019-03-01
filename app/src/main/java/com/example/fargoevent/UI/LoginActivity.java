@@ -100,23 +100,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-      /*
-      //login not using https
 
-      if(userName.equals("Admin")  && userPassword.equals("1234") ){
-
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-
-        }
-        else{
-            counter--;
-
-            attempts.setText("No. of attempts remaining: "+ String.valueOf(counter));
-            if(counter == 0 ){
-                login.setEnabled(false);
-            }
-        }
-        */
     }
 }

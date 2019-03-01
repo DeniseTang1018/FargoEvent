@@ -3,10 +3,13 @@ package com.example.fargoevent.UI;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,8 +58,11 @@ public class DetailActivity extends AppCompatActivity {
         textViewDLocation = (TextView)findViewById(R.id.tvDetailLocation);
         textViewDDescrip = (TextView)findViewById(R.id.tvDetailDescrip);
         speakerList = new ArrayList<>();
+
+        textViewDLocation.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_place_black_24dp,0,0,0);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
 //        token = intent.getStringExtra("token");
@@ -142,6 +148,27 @@ public class DetailActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.logout){
+            logout();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void logout(){
+        SharedPrefManager.getInstance(this).clear();
+        Intent intent = new Intent(DetailActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void initRecyclerView(){
