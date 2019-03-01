@@ -14,6 +14,9 @@ import com.example.fargoevent.Retrofit.Models.Speaker;
 
 import java.util.List;
 
+/**
+ * This is adapter for speaker recycle view in the third activity 
+ */
 public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.ViewHolder> {
 
     private List<Speaker> speakersList;

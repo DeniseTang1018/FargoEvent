@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.fargoevent.R;
 import com.example.fargoevent.Retrofit.Models.ListItem;
@@ -21,7 +19,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
+/**
+ * This is adapter for events recycle view in the second activity
+ */
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
 
     private List<ListItem> listItems;
     private Context context;
@@ -33,14 +35,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         void onItemClick(int position);
     }
 
-//    public void setOnItemClickListener(OnItemClickListener listener){
-//        mListener = listener;
-//    }
 
-
-
-
-    public MyAdapter(List<ListItem> listItems, Context context,OnItemClickListener onItemClickListener) {
+    public EventsAdapter(List<ListItem> listItems, Context context, OnItemClickListener onItemClickListener) {
         this.listItems = listItems;
         this.context = context;
         this.mListener = onItemClickListener;
@@ -74,12 +70,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
         viewHolder.textViewTime.setText(eventTime);
         Picasso.get().load(listItem.getImageUrl()).fit().centerInside().into(viewHolder.imageView);
-//        viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(context, "You click "+ listItem.getTitle(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
 
     }
@@ -94,14 +84,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView textViewTime;
         public ImageView imageView;
         OnItemClickListener onItemClickListener;
-//        public LinearLayout linearLayout;
+
 
         public ViewHolder(@NonNull View itemView,OnItemClickListener onItemClickListener ) {
             super(itemView);
             textViewTime = (TextView) itemView.findViewById(R.id.tvTime);
             textViewTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             imageView= (ImageView)  itemView.findViewById(R.id.imageView);
-//            linearLayout = (LinearLayout) itemView.findViewById(R.id.linearLayout);
             this.onItemClickListener = onItemClickListener;
             itemView.setOnClickListener(this);
         }

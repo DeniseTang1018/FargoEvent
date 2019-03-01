@@ -34,6 +34,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+/**
+ * This is the second activity which will list all events
+ */
 public class DetailActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSpeaker;
     private RecyclerView.Adapter adapter;
@@ -65,14 +69,12 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-//        token = intent.getStringExtra("token");
         User user = SharedPrefManager.getInstance(this).getUser();
         token = user.getToken();
 
         recyclerViewSpeaker = (RecyclerView) findViewById(R.id.rvSpeakers);
         int id = intent.getIntExtra("id",0);
         Call<Event> call = RetrofitClient.getInstance().getApi().getEvent(token, id);
-        //Log.d(" check id number " ,""+id);
         call.enqueue(new Callback<Event>() {
             @Override
             public void onResponse(Call<Event> call, Response<Event> response) {

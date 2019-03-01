@@ -3,6 +3,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
+/**
+ * This class is used for Retrofit event list with default setters and getters
+ */
+
 public class ListItem {
 
         @SerializedName("id")

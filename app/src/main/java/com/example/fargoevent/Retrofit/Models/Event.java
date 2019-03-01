@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * This class is used for Retrofit event objects with default setters and getters
+ */
 public class Event {
     @SerializedName("id")
     @Expose

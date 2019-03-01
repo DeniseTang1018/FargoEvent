@@ -22,6 +22,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * This is the first activity for this app
+ * Used for user to login the app user should
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText uName;
@@ -52,6 +56,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method to insure login page will not show if the user logged in and not yet logout
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -62,6 +69,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     *
+     * Method for check user validation to login the app. This method will send a Retrofit post request to check user validation to login the app
+     * @param userName
+     * @param userPassword
+     */
     private void validate(final String userName, final String userPassword){
 
 
@@ -78,7 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                     User.setLoggedIn(true);
                     SharedPrefManager.getInstance(LoginActivity.this).saveUser(user);
                     Intent intent = new Intent(LoginActivity.this, ListView.class);
-//                    intent.putExtra("token",token);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 

@@ -2,6 +2,9 @@ package com.example.fargoevent.Retrofit.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * This class is used for Retrofit speaker objects with default setters and getters
+ */
 public class Speaker {
     @SerializedName("id")
     @Expose

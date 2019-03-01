@@ -1,6 +1,5 @@
 package com.example.fargoevent.UI;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.fargoevent.R;
@@ -26,12 +24,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListView extends AppCompatActivity implements MyAdapter.OnItemClickListener  {
+/**
+ * This is the second activity for this app
+ *
+ */
+public class ListView extends AppCompatActivity implements EventsAdapter.OnItemClickListener  {
 
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    //private MyAdapter adapter;
     private List<ListItem> listItems;
     private String token;
 
@@ -117,7 +118,7 @@ public class ListView extends AppCompatActivity implements MyAdapter.OnItemClick
     }
     private void initRecyclerView(){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListView.this);
-        adapter = new MyAdapter(listItems, ListView.this,this);
+        adapter = new EventsAdapter(listItems, ListView.this,this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }

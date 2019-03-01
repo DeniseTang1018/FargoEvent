@@ -1,6 +1,9 @@
 package com.example.fargoevent.Retrofit.Models;
 
 
+/**
+ * This class is used for Retrofit user login with default setters and getters and a special method for check user login status
+ */
 public class User {
     private String userName;
     private String userPassword;
@@ -8,10 +11,27 @@ public class User {
     private static boolean loggedIn = false;
 
 
+    /**
+     *static method
+     * @param loggedIn set user login status
+     *                 true - is logged in
+     *                 false - is not logged in
+     *                 default is false
+     *
+     */
     public static void setLoggedIn(boolean loggedIn) {
         User.loggedIn = loggedIn;
     }
 
+
+    /**
+     *static method
+     * @return user login status
+     *        true - is logged in
+     *        false - is not logged in
+     *        default is false
+     *
+     */
     public static boolean isLoggedIn() {
         return loggedIn;
     }
