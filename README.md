@@ -1,5 +1,5 @@
 "# FargoEvent" 
-This is a adrorid application apply with Retrofit and SharedPreferences.
+This is a android application apply with Retrofit and SharedPreferences.
 
 In this application, there are three activities being impelement, login activity, events view activity, events detail activity.
 
